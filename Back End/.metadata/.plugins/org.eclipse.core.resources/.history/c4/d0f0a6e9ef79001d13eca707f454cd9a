@@ -1,0 +1,50 @@
+package com.example.ta.repository.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.example.ta.model.AnggotaKK;
+import com.example.ta.repository.IAnggotaKKRepository;
+
+public class AnggotaKKRepository implements IAnggotaKKRepository {
+	
+	@Autowired
+	JdbcTemplate jdbcTemplate; 
+	
+	@Override
+	public AnggotaKK insertAnggotaKK(AnggotaKK anggotakk) {
+		// TODO Auto-generated method stub
+		String query = "INSERT INTO tb_anggota_keluarga(agama, id_kk, jenis_kelamin, kepala_keluarga, nama, nik, pendidikan, tanggal_lahir, tempat_lahir) "
+				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+		jdbcTemplate.update(query, new Object[] {anggotakk.getAgama(), anggotakk.getId_kk(), anggotakk.getJenis_kelamin(), 
+				anggotakk.getKepala_keluarga(), anggotakk.getNama(), anggotakk.getNik(), anggotakk.getPendidikan(), anggotakk.getTanggal_lahir(), anggotakk.getTempat_lahir()});
+		return anggotakk;
+	}
+
+	@Override
+	public List<AnggotaKK> getAllAnggotaKK() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AnggotaKK updateAnggotaKK(int id, AnggotaKK anggotakk) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AnggotaKK deleteAnggotaKK(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public AnggotaKK updateGetId(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

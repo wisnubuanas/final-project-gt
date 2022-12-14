@@ -1,0 +1,13 @@
+package com.example.ta.service;
+
+import java.util.List;
+
+import com.example.ta.model.KK;
+
+public interface IKKService {
+	public KK insertKK(KK KK);
+	public List<KK> getAllKK();
+	public KK updateKK(int id, KK KK);
+	public KK deleteKK(int id);
+	public KK updateGetId(int id);
+}
