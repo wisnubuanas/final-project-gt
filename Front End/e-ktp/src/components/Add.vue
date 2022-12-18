@@ -1,12 +1,11 @@
 <template>
   <div>
-    <div class="ml-5 mt-5">
-      <h2 id="tkk">Tambah Kartu Keluarga</h2>
-      <button type="submit" id="b" class="btn btn-primary mt-2">Back</button>
-
+    <div id="dak0" class="mt-4">
+      <h2 id="dak">Tambah Kartu Keluarga</h2>
+      <router-link to="/home" type="submit" class="btn btn-primary mt-2">Back</router-link>
     </div>
 
-    <div class="border border-secondary p-5 mt-5 mb-5 rounded" id="x" style="width: fit-content; margin:auto">
+    <div class="border border-secondary p-5 mt-5 mb-5 rounded" id="borderaddkk" >
 
       <form id="xx">
 
@@ -96,13 +95,12 @@ name : 'AddComponent',
 <style>
 #tkk {
   color : #282892;
-  margin-left: 150px;
 }
-#b{
-  margin-left: 150px;
+#atast{
+  margin: left 200%;
 }
-#x{
-
-  margin-left: 100%;
+#borderaddkk{
+  width: 800px; 
+    margin: 350px;
 }
 </style>

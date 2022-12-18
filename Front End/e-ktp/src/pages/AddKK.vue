@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style>
-#t{
+/* #t{
     margin-left: 100px;
-}
+} */
 </style>

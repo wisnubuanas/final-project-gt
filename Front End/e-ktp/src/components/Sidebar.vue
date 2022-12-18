@@ -9,18 +9,21 @@
                     </div>
                 </ul>
                 <ul class="list-unstyled components">
-                        <div class="ml-2">
+                        <div class="ml-2 text-white">
                             <!-- <p>Dummy Heading</p> -->
-                            <li>
-                                <a class>Home</a>
-                            </li>
-                            <li>
-                                <a>Tambah KK</a>
-                            </li>
+                            <div class="menu">
+                                <router-link to="/home" class="text-white nav-link">Home</router-link>
+                            </div>
+                            <div class=" menu mt-3">
+                                <!-- <img src="../assets/portrait.png" style="width: 50px; height: auto;"> -->
+                                <router-link to="/addkk" class="text-white nav-link">Tambah KK</router-link>
+                            </div>
                             
-                            <li class="mt-5">
-                                <a>Sign Out</a>
-                            </li>
+                                <div class=" sign-out menu px-2 py-2" >
+                                    <!-- <img src="../assets/log-out.png" style="width: 20px; height: auto;"> -->
+                                    <router-link  to="/" class="text-white nav-link">Sign Out</router-link>
+                                    
+                            </div>
                         </div>
                 </ul>
                         
@@ -81,6 +84,17 @@ name : 'SidebarComponents',
     font-size: 1.1em;
     display: block;
 }
+
+.menu:hover{
+    cursor: pointer;
+    background-color: #000080;
+}
+
+.sign-out {
+    margin-top: 300px;
+}
+
+
 
 
 </style>
