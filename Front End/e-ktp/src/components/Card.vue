@@ -14,14 +14,14 @@
       <div class="col">
         <div class="card-2 d-flex flex-column justify-content-center text-center">
           <p class="title-card">Jumlah Anggota</p>
-          <p class="count">0</p>
+          <p class="card-text">{{ anggotaData.length }}</p>
         </div>
       </div>
 
       <!-- TABLE -->
       <div class="table mt-2 ml-3  " style="width: 100vw;">
-        <h5 class="mt-4 mb-2 mb-2 d-flex text-center">Data Kartu keluarga</h5>
-        <table id="datakkk" >
+        <h4 id="dkktulisan" class="mt-4 mb-2 mb-2 d-flex text-center">Data Kartu keluarga</h4>
+        <table id="datakkk" class="mt-3" >
               <thead>
                   <tr>
                       <th scope="col">No</th>
@@ -72,6 +72,7 @@
 
 <script>
 import kkService from "../services/kkService"
+import anggotakkService from "@/services/anggotakkService";
 
 export default {
 name : "CardComponents",
@@ -87,6 +88,16 @@ methods : {
                     console.log(e);
                 });
 },
+        getAnggota() {
+            anggotakkService.getAll()
+                .then((response) => {
+                    this.anggotaData = response.data;
+                    console.log(this.anggotaData);
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+        },
         deleteKKFunc(id){
             if(confirm("Apakah anda yakin hapus?")){
                 kkService.deletekk(id)
@@ -104,10 +115,12 @@ methods : {
     },
     mounted(){
         this.getKK();
+        this.getAnggota()
     },
     data(){
         return{
             kkData : null,
+            anggotaData : null,
         }
     }
 }
@@ -124,7 +137,7 @@ methods : {
   height: 150px;
   width: 200px;
   /* background-color: salmon; */
-  background-color: #000080;
+  background-color: #36393f;
   border-radius: 20px;
 }
 
@@ -132,7 +145,7 @@ methods : {
   height: 150px;
   width: 200px;
   /* background-color: rgb(0, 255, 170); */
-  background-color: #000080;
+  background-color: #36393f;
   border-radius: 20px;
 }
 
@@ -157,9 +170,12 @@ methods : {
 
 
 
-/* #kotakkkk{
+#dkktulisan{
   margin-left: 250px;
-} */
+}
+#datakkk{
+  margin-left: 50px;
+}
 /* #h{
   margin-left: 230px;
 } */

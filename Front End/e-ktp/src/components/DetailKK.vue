@@ -22,13 +22,13 @@
           <label class="col-sm-2 col-form-label">Nomor Kartu Keluarga</label>
           <div class="form-group row">
             <div class="col-sm-10">
-            <input :disabled="ReadOnly" v-model="kkData.nomor_kk" type="text" class="form-control" placeholder="Nomer KK">
+            <input :disabled="ReadOnly" v-model="kkData.nomor_kk" type="text" class="form-control" placeholder="Nomer KK" required>
             </div>
           </div>
           <label class="col-sm-3 col-form-label">Desa / Kelurahan</label>
           <div class="form-group row">
             <div class="col-sm-10">
-            <input :disabled="ReadOnly"  v-model="kkData.desa_kelurahan" type="text" class="form-control" placeholder="Desa / Kelurahan">
+            <input :disabled="ReadOnly"  v-model="kkData.desa_kelurahan" type="text" class="form-control" placeholder="Desa / Kelurahan" required>
             </div>
           </div>
         </div>
@@ -37,7 +37,7 @@
           <label class="col-sm-2 col-form-label">Alamat</label>
             <div class="form-group row">
               <div class="col-sm-10">
-              <textarea  :disabled="ReadOnly"  v-model="kkData.alamat"  style="overflow: auto;" cols="72" rows="auto"  placeholder="Alamat"> </textarea>
+              <textarea  :disabled="ReadOnly"  v-model="kkData.alamat"  style="overflow: auto;" cols="72" rows="auto"  placeholder="Alamat" required> </textarea>
             </div>
           </div>
         </div>
@@ -46,14 +46,14 @@
           <label class="col-sm-2 col-form-label">Kecamatan</label>
           <div class="form-group row">
             <div class="col-sm-10">
-            <input :disabled="ReadOnly" v-model="kkData.kecamatan" type="text" class="form-control" placeholder="Kecamatan">
+            <input :disabled="ReadOnly" v-model="kkData.kecamatan" type="text" class="form-control" placeholder="Kecamatan" required>
             </div>
           </div>
     
           <label class="col-sm-3 col-form-label" >Kabupaten / Kota</label>
           <div class="form-group row">
             <div class="col-sm-10">
-            <input :disabled="ReadOnly" v-model="kkData.kabupaten_kota"  type="text" class="form-control" placeholder="Kabupaten / Kota">
+            <input :disabled="ReadOnly" v-model="kkData.kabupaten_kota"  type="text" class="form-control" placeholder="Kabupaten / Kota" required>
             </div>
           </div>
           </div>
@@ -61,13 +61,13 @@
           <label class="col-sm-2 col-form-label" >RT</label>
         <div class="form-group row">
           <div class="col-sm-10">
-          <input :disabled="ReadOnly"  v-model="kkData.rt" type="text" class="form-control" placeholder="RT">
+          <input :disabled="ReadOnly"  v-model="kkData.rt" type="text" class="form-control" placeholder="RT" required>
           </div>
         </div>
         <label class="col-sm-3 col-form-label">Provinsi</label>
         <div class="form-group row">
           <div class="col-sm-10">
-          <input :disabled="ReadOnly" v-model="kkData.provinsi"  type="text" class="form-control" placeholder="Provinsi">
+          <input :disabled="ReadOnly" v-model="kkData.provinsi"  type="text" class="form-control" placeholder="Provinsi" required>
           </div>
         </div>
       </div>
@@ -76,13 +76,13 @@
         <label class="col-sm-2 col-form-label">RW</label>
       <div class="form-group row">
         <div class="col-sm-10">
-        <input :disabled="ReadOnly"  v-model="kkData.rw" type="text" class="form-control" placeholder="RW">
+        <input :disabled="ReadOnly"  v-model="kkData.rw" type="text" class="form-control" placeholder="RW" required>
         </div>
       </div>
       <label class="col-sm-3 col-form-label">Kode Pos</label>
       <div class="form-group row">
         <div class="col-sm-10">
-        <input :disabled="ReadOnly"  v-model="kkData.kode_pos" type="text" class="form-control" placeholder="Kode Pos">
+        <input :disabled="ReadOnly"  v-model="kkData.kode_pos" type="text" class="form-control" placeholder="Kode Pos" required>
         </div>
       </div>
     </div>

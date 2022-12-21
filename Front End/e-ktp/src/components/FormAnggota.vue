@@ -1,5 +1,5 @@
 <template>
-  <div v-show="!success">
+  <div v-show="!Success">
                 <!-- Button -->
                 <h2 id="dak" class="mt-3">Detail Anggota Keluarga</h2>
                 <router-link :to="{ path: '/detailKK/' + anggotaData.id_kk + '/listAnggota' }">
@@ -22,13 +22,13 @@
           <label class="col-sm-2 col-form-label">NIK</label>
           <div class="form-group row">
             <div class="col-sm-10">
-            <input :disabled="ReadOnly" v-model="anggotaData.nik" type="text" class="form-control" placeholder="NIK">
+            <input :disabled="ReadOnly" v-model="anggotaData.nik" type="text" class="form-control" placeholder="NIK" required>
             </div>
           </div>
           <label class="col-sm-3 col-form-label" >Jenis Kelamin</label>
         <div class="form-group row">
           <div class="col-sm-12">
-          <select :disabled="ReadOnly" v-model="anggotaData.jenis_kelamin" class="form-control" placeholder="Jenis Kelamin">
+          <select :disabled="ReadOnly" v-model="anggotaData.jenis_kelamin" class="form-control" placeholder="Jenis Kelamin" required>
             <option selected>  </option>
                         <option>Laki - Laki</option>
                         <option>Perempuan</option>
@@ -41,14 +41,14 @@
           <label class="col-sm-2 col-form-label">Nama</label>
           <div class="form-group row">
             <div class="col-sm-10">
-            <input :disabled="ReadOnly" v-model="anggotaData.nama" type="text" class="form-control" placeholder="Nama">
+            <input :disabled="ReadOnly" v-model="anggotaData.nama" type="text" class="form-control" placeholder="Nama" required>
             </div>
           </div>
     
           <label class="col-sm-3 col-form-label" >Agama</label>
           <div class="form-group row">
             <div class="col-sm-12">
-            <select :disabled="ReadOnly" v-model="anggotaData.agama" class="form-control" placeholder="Agama">
+            <select :disabled="ReadOnly" v-model="anggotaData.agama" class="form-control" placeholder="Agama" required>
                 <option selected>  </option>
                         <option>Islam</option>
                         <option>Kristen</option>
@@ -64,14 +64,14 @@
             <label class="col-sm-2 col-form-label">Tanggal Lahir</label>
           <div class="form-group row">
             <div class="col-sm-12">
-            <input :disabled="ReadOnly" v-model="anggotaData.tanggal_lahir" type="date" class="form-control" style="width:110%" placeholder="Tanggal Lahir">
+            <input :disabled="ReadOnly" v-model="anggotaData.tanggal_lahir" type="date" class="form-control" style="width:110%" placeholder="Tanggal Lahir" required>
             </div>
           </div>
 
         <label class="col-sm-3 col-form-label ml-5" style="margin-left : 200%">Pendidikan</label>
         <div class="form-group row" style="margin-left : -10px">
           <div class="col-sm-12">
-          <select :disabled="ReadOnly" v-model="anggotaData.pendidikan" class="form-control" style="width:85%" placeholder="Pendidikan">
+          <select :disabled="ReadOnly" v-model="anggotaData.pendidikan" class="form-control" style="width:85%" placeholder="Pendidikan" required>
             <option selected>  </option>
                         <option>SD</option>
                         <option>SMP</option>
@@ -90,13 +90,13 @@
         <label class="col-sm-2 col-form-label">Tempat Lahir</label>
       <div class="form-group row">
         <div class="col-sm-10">
-        <input :disabled="ReadOnly" v-model="anggotaData.tempat_lahir" type="text" class="form-control" placeholder="Tempat Lahir">
+        <input :disabled="ReadOnly" v-model="anggotaData.tempat_lahir" type="text" class="form-control" placeholder="Tempat Lahir" required>
         </div>
       </div>
       <label class="col-sm-3 col-form-label">Kepala Keluarga</label>
       <div class="form-group row">
         <div class="col-sm-12">
-        <select :disabled="ReadOnly" v-model="anggotaData.kepala_keluarga" class="form-control" style="width:150%" placeholder="Kepala Keluarga">
+        <select :disabled="ReadOnly" v-model="anggotaData.kepala_keluarga" class="form-control" style="width:150%" placeholder="Kepala Keluarga" required>
             <option selected>  </option>
                         <option>       Ya</option>
                         <option>       Tidak</option>
@@ -116,7 +116,7 @@
                 </button>
   </form>
 </div>
-<div v-show="success">
+<div v-show="Success">
             <Success :propsAlert="textAlert"></Success>
         </div>
     </div>
@@ -147,7 +147,7 @@ export default {
                 id_kk: null,
             },
             ReadOnly: true,
-            success: false,
+            Success: false,
             textAlert: '',
             btnUpdate: false,
         };
@@ -175,7 +175,7 @@ export default {
                 .updateAnggotaKK(id, data)
                 .then((response) => {
                     console.log(response.data);
-                    this.success = true;
+                    this.Success = true;
                     this.textAlert = 'Diupdate ';
                 })
                 .catch((e) => {

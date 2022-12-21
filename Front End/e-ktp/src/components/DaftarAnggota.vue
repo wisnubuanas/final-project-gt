@@ -49,43 +49,44 @@
 
       <!-- ftambah Anggota -->
       <b-modal id="modal-prevent-closing" ref="modal" title="Silahkan Tambahkan Anggota" ok-title="Submit"
-                cancel-title="Tutup"  @ok="TambahAK" @submit="getIdKK" required>
+                cancel-title="Tutup"  @ok="TambahAK" @submit="getIdKK" style="width: max-content;" required>
                 <!-- <button @submit="inputAnggota" type="submit">tes</button> -->
 
       <!-- <div class="border border-secondary p-5 mt-5 mb-5 rounded" id="kotakformtambah" > -->
 
+        <!-- <div style="width: 500px;"> -->
 <form @submit="inputAnggota">
-  <div class="form-row">
-    <label class="col-sm-2 col-form-label">NIK</label>
+    <div class="form-row">
+      <label class="col-sm-2 col-form-label">NIK</label>
     <div class="form-group row">
       <div class="col-sm-10">
-      <input v-model="anggotaData.nik" type="text" class="form-control" placeholder="NIK">
+      <input v-model="anggotaData.nik" type="text" class="form-control" placeholder="NIK" required>
       </div>
     </div>
     <label class="col-sm-3 col-form-label" >Jenis Kelamin</label>
   <div class="form-group row">
     <div class="col-sm-12">
-    <select v-model="anggotaData.jenis_kelamin" class="form-control" placeholder="Jenis Kelamin">
+    <select v-model="anggotaData.jenis_kelamin" class="form-control" placeholder="Jenis Kelamin" required>
       <option selected>  </option>
-                  <option>Laki - Laki</option>
-                  <option>Perempuan</option>
-      </select>
-    </div>
+      <option>Laki - Laki</option>
+      <option>Perempuan</option>
+    </select>
   </div>
-  </div>
+</div>
+</div>
 
-    <div class="form-row">
-    <label class="col-sm-2 col-form-label">Nama</label>
-    <div class="form-group row">
-      <div class="col-sm-10">
-      <input v-model="anggotaData.nama" type="text" class="form-control" placeholder="Nama">
-      </div>
+<div class="form-row">
+  <label class="col-sm-2 col-form-label">Nama</label>
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <input v-model="anggotaData.nama" type="text" class="form-control" placeholder="Nama" required>
+    </div>
     </div>
 
     <label class="col-sm-3 col-form-label" >Agama</label>
     <div class="form-group row">
       <div class="col-sm-12">
-      <select v-model="anggotaData.agama" class="form-control" placeholder="Agama">
+      <select v-model="anggotaData.agama" class="form-control" placeholder="Agama" required>
           <option selected>  </option>
                   <option>Islam</option>
                   <option>Kristen</option>
@@ -99,16 +100,16 @@
     </div>
   <div class="form-row">
       <label class="col-sm-2 col-form-label">Tanggal Lahir</label>
-    <div class="form-group row">
-      <div class="col-sm-12">
-      <input v-model="anggotaData.tanggal_lahir" type="date" class="form-control" style="width:110%" placeholder="Tanggal Lahir">
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <input v-model="anggotaData.tanggal_lahir" type="date" class="form-control" style="width:110%" placeholder="Tanggal Lahir" required>
+        </div>
       </div>
-    </div>
-
+      
   <label class="col-sm-3 col-form-label ml-5" style="margin-left : 200%">Pendidikan</label>
   <div class="form-group row" style="margin-left : -10px">
     <div class="col-sm-12">
-    <select v-model="anggotaData.pendidikan" class="form-control" style="width:85%" placeholder="Pendidikan">
+    <select v-model="anggotaData.pendidikan" class="form-control" style="width:85%" placeholder="Pendidikan" required>
       <option selected>  </option>
                   <option>SD</option>
                   <option>SMP</option>
@@ -125,15 +126,15 @@
 
 <div class="form-row">
   <label class="col-sm-2 col-form-label">Tempat Lahir</label>
-<div class="form-group row">
-  <div class="col-sm-10">
-  <input v-model="anggotaData.tempat_lahir" type="text" class="form-control" placeholder="Tempat Lahir">
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <input v-model="anggotaData.tempat_lahir" type="text" class="form-control" placeholder="Tempat Lahir" required>
+    </div>
   </div>
-</div>
-<label class="col-sm-3 col-form-label">Kepala Keluarga</label>
-<div class="form-group row">
-  <div class="col-sm-12">
-  <select v-model="anggotaData.kepala_keluarga" class="form-control" style="width:150%" placeholder="Kepala Keluarga">
+  <label class="col-sm-3 col-form-label">Kepala Keluarga</label>
+  <div class="form-group row">
+    <div class="col-sm-12">
+  <select v-model="anggotaData.kepala_keluarga" class="form-control" style="width:150%" placeholder="Kepala Keluarga" required>
       <option selected>  </option>
                   <option>       Ya</option>
                   <option>       Tidak</option>

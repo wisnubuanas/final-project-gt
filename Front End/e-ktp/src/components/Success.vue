@@ -2,28 +2,25 @@
   <div class="d-flex justify-content-around">
       <div class="cards shadow mt-5 text-center">
           <div class="card-body ">
-              <h4 class="card-title mb-1">Success!</h4>
-              <p class="card-text">Data Berhasil {{ propsAlert }} !</p>
+              <h4 class="card-title mb-1 text-white">Success!</h4>
+              <p class="card-text text-white">Data Berhasil {{ propsAlert }} !</p>
 
               <router-link to="/home" v-if="propsAlert === 'Disubmit'">
-                  <button class="back btn btn-primary mt-3">Back</button>
+                  <button class="btn btn-primary mt-3">Back</button>
               </router-link>
 
               <router-link to="/home" v-else-if="propsAlert === 'Diupdate'">
-                  <button class="back btn btn-primary mt-3">Back</button>
+                  <button class="btn btn-primary mt-3">Back</button>
               </router-link>
 
               <router-link :to="{ path: '/detailKK/' + this.$route.params.no_kk + '/listAnggota/' }"
                   v-else-if="propsAlert === 'Disubmit '">
-                  <button class="back btn btn-primary mt-3" @click="RefreshFunc">Back</button>
+                  <button class="btn btn-primary mt-3" @click="RefreshFunc">Back</button>
               </router-link>
 
-              <router-link to="/home" v-else-if="propsAlert === 'Dihapus'">
-                  <button class="back btn btn-primary mt-3" @click="RefreshFunc">Refles</button>
-              </router-link>
               <router-link :to="{ path: '/detailKK/' + this.$route.params.id + '/listAnggota/detailAnggota' }"
                   v-else-if="propsAlert === 'Diupdate '">
-                  <button class="back btn btn-primary mt-3" @click="RefreshFunc">Back</button>
+                  <button class="btn btn-primary mt-3" @click="RefreshFunc">Back</button>
               </router-link>
           </div>
       </div>
@@ -32,7 +29,7 @@
 
 <script>
 export default {
-  name: "SuccesS",
+  name: "SuccessComp",
   data() {
       return {
       }
@@ -43,7 +40,7 @@ export default {
       },
   },
   props: [
-      'propsAlert', 'propsAlertt'
+      'propsAlert'
   ],
 }
 </script>
