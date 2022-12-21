@@ -1,9 +1,11 @@
 <template>
-    <div>
-        <div id="t">
-            <Add></Add>
-        </div>
-                <Sidebar></Sidebar>
+    <div class="row">
+      <div class="col-md-3">
+        <Sidebar></Sidebar>
+      </div>
+      <div class="col-md-9">
+        <Add></Add>
+      </div>
     </div>
 </template>
 

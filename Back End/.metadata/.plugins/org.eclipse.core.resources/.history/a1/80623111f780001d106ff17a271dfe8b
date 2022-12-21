@@ -34,17 +34,15 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public User getUserEmail(String email) {
+	public User deleteUser(int id) {
 		// TODO Auto-generated method stub
-		return userRepository.getUserEmail(email);
+		return userRepository.deleteUser(id);
 	}
 
 	@Override
-	public User getUserEmailPass(User user) {
+	public User updateGetId(int id) {
 		// TODO Auto-generated method stub
-		return userRepository.getUserEmailPass(user);
+		return userRepository.updateGetId(id);
 	}
-
-
 
 }

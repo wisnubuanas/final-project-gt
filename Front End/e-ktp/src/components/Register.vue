@@ -6,34 +6,41 @@
         <h3 id="d" class="text-white">Daftar Peserta</h3>
         <div class="d-flex flex-center p-3 mt-4 mr-4">
   
-      <form id="q" style="width: 500px; margin: auto">
+      <form id="q" style="width: 500px; margin: auto" @submit.prevent="register">
         <div class="form-row">
       <label class="col-sm-2 col-form-label text-white">Nama Lengkap</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control ml-1" id="" placeholder="Nama Lengkap">
+        <input type="text" class="form-control ml-1" id="" placeholder="Nama Lengkap" v-model="userRegister.nama">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label text-white">Email</label>
       <div class="col-sm-9">
-        <input type="email" class="form-control ml-1" id="" placeholder="Email">
+        <input type="email" class="form-control ml-1" id="" placeholder="Email" v-model="userRegister.email">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label text-white">Password</label>
       <div class="col-sm-9">
-        <input type="password" class="form-control ml-1" id="" placeholder="Password">
+        <input type="password" class="form-control ml-1" id="" placeholder="Password" v-model="userRegister.password">
       </div>
     </div>
     <div class="form-group row">
       <label class="col-sm-2 col-form-label text-white">Repassword</label>
       <div class="col-sm-9">
-        <input type="password" class="form-control ml-1" id="" placeholder="Repassword">
+        <input type="password" class="form-control ml-1" id="" placeholder="Repassword" v-model="password2">
       </div>
     </div>
+
+            <p v-if="registerSuccess" style="color:red;">Berhasil Daftar!, Silahkan Login</p>
+            <p v-if="emailValid" style="color:red;">Email sudah di gunakan!</p>
+            <p v-if="passwordValid" style="color:red;">Password tidak sama</p>
+
     <div class="form-group row">
       <div class="col-sm-4 mt-2 d-flex justify-content-around">
-        <button type="submit" class="btn btn-danger">Login</button>
+        <router-link to="/">
+          <button type="submit" class="btn btn-danger">Login</button>
+        </router-link>
         <button type="submit" class="btn btn-primary">Daftar</button>
       </div>
     </div>
@@ -50,8 +57,57 @@
 </template>
 
 <script>
+import userservice from '../services/userService'
+
 export default {
 name: 'registerComponents',
+
+data() {
+        return {
+            userRegister: {
+                nama: null,
+                email: null,
+                password: null
+            },
+            password2: "",
+            registerSuccess: false,
+            emailValid: false,
+            passwordValid: false
+        }
+    },
+
+    methods: {
+
+        register() {
+            let data = this.userRegister;
+            let password1 = data.password;
+            let password2 = this.password2;
+
+            this.registerSuccess = false;
+            this.emailValid = false;
+            this.passwordValid = false;
+
+            if (password1 == password2) {
+                console.log(data);
+                userservice.register(data).then(response => {
+                    console.log(response);
+                    this.dataRegister = {};
+                    this.password2 = "";
+                    this.registerSuccess = true;
+                    // l
+                }).catch(e => {
+                    console.log(e);
+                    if (e.response.data.status === 500) {
+
+                        this.emailValid = true;
+                    }
+                })
+            } else {
+                // location.reload();
+                this.passwordValid = true;
+            }
+        }
+    }
 }
 </script>
 

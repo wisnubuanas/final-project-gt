@@ -35,29 +35,29 @@ public class UserRepository implements IUserRepository {
 	@Override
 	public User updateUser(int id, User user) {
 		// TODO Auto-generated method stub
-        String query = "UPDATE tb_user SET email = ?, nama = ?, password = ?";
-
-        jdbcTemplate.update(query,
-                new Object[] { user.getEmail(), user.getNama(), user.getPassword(), id });
-
-        return user;
-	}
-
-
-	@Override
-	public User getUserEmail(String email) {
-		// TODO Auto-generated method stub
-		String query = "SELECT * FROM tb_user WHERE email = ?";
-        return jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<>(User.class), email);
+		String query = "UPDATE tb_student SET email = ?, nama = ?, password = ?, "
+				+ " WHERE id = ?";
+		jdbcTemplate.update(query, new Object[] {user.getEmail(), user.getNama(), user.getPassword()});
+		return user;
 	}
 
 	@Override
-	public User getUserEmailPass(User user) {
+	public User deleteUser(int id) {
 		// TODO Auto-generated method stub
-        String query = "SELECT * FROM tb_user WHERE email = ? AND password = ?";
-        var result = jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<>(User.class),
-                new Object[] { user.getEmail(), user.getPassword() });
-        return result;
+		String query = "SELECT * FROM tb_user WHERE id = ?";
+		var result = jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<>(User.class), id);
+		
+		query = "DELETE FROM tb_user WHERE id = ?";
+		jdbcTemplate.update(query, id);
+		return result;
+	}
+
+	@Override
+	public User updateGetId(int id) {
+		// TODO Auto-generated method stub
+		String query = "SELECT * FROM tb_user WHERE id = ?";
+		var result = jdbcTemplate.queryForObject(query, new BeanPropertyRowMapper<>(User.class), id);
+		return result;
 	}
 
 }

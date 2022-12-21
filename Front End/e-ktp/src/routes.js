@@ -42,9 +42,10 @@ export default[
         component: ListAnggota,
         name : 'listak',
     },
-    // {
-    //     path: `/detailKK/:id/listAnggota/detailAnggota`,
-    //     component: "DetailAk"
-    // }
+    {
+        path: `/detailKK/:no_kk/listAnggota/detailAnggota`,
+        component: DetailAK,
+        name : 'detailak',
+    }
 
 ];

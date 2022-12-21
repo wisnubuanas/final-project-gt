@@ -12,7 +12,7 @@
         </button>
 
         <router-link :to="{name : 'listak'}">
-            <button class="btn btn-primary mt-3 ml-2" >
+            <button class="btn btn-success mt-3 ml-2" >
                 {{ btnDetail }}
             </button>
         </router-link>
@@ -86,11 +86,11 @@
         </div>
       </div>
     </div>
-            
-            <button class="button-submit mr-2" type="submit" v-show="Btnbawah">
+    <p v-if="validasiKK" class="small text-danger">Nomor KK Sudah Terdaftar</p>            
+            <button class="button-submit mr-2" type="submit" v-show="buttons == '/addkk'">
                 {{ buttonValue }}
             </button>
-            <button class="button-submit" type="submit" v-show="Btnbawah">
+            <button class="button-submit btn btn-primary" type="submit" v-show="updateBtn">
                 {{ buttonValue }}
             </button>
         </form>
@@ -132,6 +132,8 @@ export default {
             showBtn: false,
             textAlert: '',
             Btnbawah : false,
+            updateBtn : false,
+            validasiKK: false,
 
         };
       },
@@ -149,7 +151,12 @@ export default {
                         this.textAlert = 'Disubmit';
                     })
                     .catch((e) => {
-                        console.log(e);
+                      let errorEntry = e.response.data.trace.includes("Duplicate entry");
+                        if (errorEntry) {
+                            this.validasiKK = true;
+                        } else {
+                            this.validasiKK = false;
+                        }
                     });
             } else {
                 kkService
@@ -157,6 +164,7 @@ export default {
                     .then((response) => {
                         console.log(response.data);
                         this.success = true;
+                        this.textAlert = 'Diupdate';
                     })
                     .catch((e) => {
                         console.log(e);
@@ -164,13 +172,13 @@ export default {
             }
         },
         updateFunc() {
-          this.Btnbawah = true
-          this.showBtn = true
-            let update = this.ReadOnly;
+          let update = this.ReadOnly;
             if (update == true) {
                 this.ReadOnly = false;
+                this.updateBtn = true;
             } else {
                 this.ReadOnly = true;
+                this.updateBtn = false;
             }
         },
         getKK(id) {

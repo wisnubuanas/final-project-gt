@@ -167,6 +167,17 @@ export default {
                 });
         },
 
+        getAnggotaFunc(id_kk){
+          anggotakkService. getAnggotaKK(id_kk)
+          .then((response => {
+            this.anggotaData = response.data;
+            console.log(this.anggotaData);
+          })
+          .catch((e => {
+            console.log(e);
+          })))
+        },
+
         updateAnggotaKKFunc() {
             let data = this.anggotaData;
             let id = this.$route.params.id;

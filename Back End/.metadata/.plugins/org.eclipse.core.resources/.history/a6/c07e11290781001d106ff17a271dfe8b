@@ -38,7 +38,7 @@ public class KKRepository implements IKKRepository {
 		String query = "UPDATE tb_kartu_keluarga SET alamat = ?, desa_kelurahan = ?, kabupaten_kota = ?, kecamatan = ?, "
 				+ "kode_pos = ?, nomor_kk = ?, provinsi = ?, rt = ?, rw = ? WHERE id = ?";
 		
-		jdbcTemplate.update(query, new Object[] {kk.getAlamat(), kk.getDesa_kelurahan(), kk.getKabupaten_kota(), kk.getKecamatan(), kk.getKode_pos(), kk.getNomor_kk(), kk.getProvinsi(), kk.getRt(), kk.getRw(), id});
+		jdbcTemplate.update(query, new Object[] {kk.getAlamat(), kk.getDesa_kelurahan(), kk.getKabupaten_kota(), kk.getKecamatan(), kk.getKode_pos(), kk.getNomor_kk(), kk.getProvinsi(), kk.getRt(), kk.getRw()});
 	
 		return kk;
 	}
