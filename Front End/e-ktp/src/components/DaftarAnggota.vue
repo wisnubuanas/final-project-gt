@@ -49,8 +49,8 @@
 
       <!-- ftambah Anggota -->
       <b-modal id="modal-prevent-closing" ref="modal" title="Silahkan Tambahkan Anggota" ok-title="Submit"
-                cancel-title="Tutup"  type="submit" required>
-                <button @submit="inputAnggota" type="submit">tes</button>
+                cancel-title="Tutup"  @ok="TambahAK" @submit="getIdKK" required>
+                <!-- <button @submit="inputAnggota" type="submit">tes</button> -->
 
       <!-- <div class="border border-secondary p-5 mt-5 mb-5 rounded" id="kotakformtambah" > -->
 
@@ -150,7 +150,7 @@
 </div> -->
 </form>
 <!-- </div> -->
-<p  class="small text-danger">NIK Sudah Terdaftar</p>
+<p  v-if="validasiKK" class="small text-danger">NIK Sudah Terdaftar</p>
             </b-modal>
 <!-- end -->
 <div v-show="success">
@@ -190,37 +190,37 @@ data() {
     },
 
 methods : {
-  // TambahAK() {
-  //           this.getIdKK();
-  //           let data = this.anggotaData;
-  //           let id = this.anggotaData.id;
-  //           // let id = this.$route.params.id;
-  //           let route = this.$route.fullPath;
-  //           if (route === `/updateAnggota`) {
-  //               anggotakkService.updateKartuKeluarga(id, data)
-  //                   .then((response) => {
-  //                       console.log(response.data);
-  //                   })
-  //                   .catch((e) => {
-  //                       console.log(e);
-  //                   });
-  //           } else {
-  //               anggotakkService.create(data)
-  //                   .then((response) => {
-  //                       console.log(response.data);
-  //                       this.textAlert = 'Disubmit '
-  //                       this.success = true;
-  //                   })
-  //                   .catch((e) => {
-  //                       let errorEntry = e.response.data.trace.includes("Duplicate entry");
-  //                       if (errorEntry) {
-  //                           this.validasiKK = true;
-  //                       } else {
-  //                           this.validasiKK = false;
-  //                       }
-  //                   });
-  //           }
-  //       },
+  TambahAK() {
+            this.getIdKK();
+            let data = this.anggotaData;
+            let id = this.anggotaData.id;
+            // let id = this.$route.params.id;
+            let route = this.$route.fullPath;
+            if (route === `/updateAnggota`) {
+                anggotakkService.updateKartuKeluarga(id, data)
+                    .then((response) => {
+                        console.log(response.data);
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                    });
+            } else {
+                anggotakkService.create(data)
+                    .then((response) => {
+                        console.log(response.data);
+                        this.textAlert = 'Disubmit '
+                        this.success = true;
+                    })
+                    .catch((e) => {
+                        let errorEntry = e.response.data.trace.includes("Duplicate entry");
+                        if (errorEntry) {
+                            this.validasiKK = true;
+                        } else {
+                            this.validasiKK = false;
+                        }
+                    });
+            }
+        },
         inputAnggota() {
             let data = this.anggotaData;
             // console.log(data)
@@ -235,19 +235,19 @@ methods : {
         getIdKK() {
                 this.anggotaData.id_kk = this.$route.params.no_kk
             },
-            getAllAnggotaKK(id_kk) {
-                    // let id_kk = this.$route.params.no_kk;
-                    anggotakkService.getAnggotaKK(id_kk)
-                        .then((response) => {
-                            this.anggotaData = response.data;
-                            console.log(this.anggotaData);
-                        })
-                        .catch((e) => {
-                            console.log(e);
-                        });
-                },
-                deleteAnggotaKKFunc(id){
-                    if(confirm("Apakah anda yakin hapus?")){
+        getAnggotaKK() {
+                let id_kk = this.$route.params.no_kk;
+                anggotakkService.getAnggotaKK(id_kk)
+                    .then((response) => {
+                        this.anggotaData = response.data;
+                        console.log(this.anggotaData);
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                    });
+            },
+        deleteAnggotaKKFunc(id){
+                if(confirm("Apakah anda yakin hapus?")){
                 anggotakkService.deleteAnggotaKK(id)
                 .then(response => {
                     console.log(response.data);
@@ -259,10 +259,10 @@ methods : {
                 }else{
                     alert("Hapus dibatalkan!")
                 }
-            }
-        },
+              }
+            },
         Form(id) {
-            anggotakkService.getIDAnggotaKK(id)
+            anggotakkService.updateGetId(id)
                 .then(response => {
                     this.anggotaData = response.data
                 }).catch(e => {
@@ -270,7 +270,7 @@ methods : {
                 })
         },
         mounted(){
-            this.getAllAnggotaKK(this.$route.params.no_kk);
+            this.getAnggotaKK(this.$route.params.no_kk);
         },
         //         getAnggotaKK(){
         //             anggotakkService.getAll()

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-show="!success">
                 <!-- Button -->
                 <h2 id="dak" class="mt-3">Detail Anggota Keluarga</h2>
                 <router-link :to="{ path: '/detailKK/' + anggotaData.id_kk + '/listAnggota' }">
@@ -167,16 +167,6 @@ export default {
                 });
         },
 
-        getAnggotaFunc(id_kk){
-          anggotakkService. getAnggotaKK(id_kk)
-          .then((response => {
-            this.anggotaData = response.data;
-            console.log(this.anggotaData);
-          })
-          .catch((e => {
-            console.log(e);
-          })))
-        },
 
         updateAnggotaKKFunc() {
             let data = this.anggotaData;

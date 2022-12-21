@@ -43,7 +43,7 @@ export default[
         name : 'listak',
     },
     {
-        path: `/detailKK/:no_kk/listAnggota/detailAnggota`,
+        path: `/detailKK/:id/listAnggota/detailAnggota`,
         component: DetailAK,
         name : 'detailak',
     }

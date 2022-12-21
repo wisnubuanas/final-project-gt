@@ -40,7 +40,7 @@ public class AnggotaKKRepository implements IAnggotaKKRepository {
 				+ "nama = ?, nik = ?, pendidikan = ?, tanggal_lahir = ?, tempat_lahir = ? WHERE id = ?";
 		
 		jdbcTemplate.update(query, new Object[] {anggotakk.getAgama(), anggotakk.getId_kk(), anggotakk.getJenis_kelamin(), 
-				anggotakk.getKepala_keluarga(), anggotakk.getNama(), anggotakk.getNik(), anggotakk.getPendidikan(), anggotakk.getTanggal_lahir(), anggotakk.getTempat_lahir(), id});
+				anggotakk.getKepala_keluarga(), anggotakk.getNama(), anggotakk.getNik(), anggotakk.getPendidikan(), anggotakk.getTanggal_lahir(), anggotakk.getTempat_lahir()});
 		return anggotakk;
 	}
 
