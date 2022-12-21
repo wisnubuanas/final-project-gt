@@ -12,4 +12,5 @@ public interface IAnggotaKKService {
 	public AnggotaKK updateAnggotaKK(int id, AnggotaKK anggotakk);
 	public AnggotaKK deleteAnggotaKK(int id);
 	public AnggotaKK updateGetId(int id);
+	public List<AnggotaKK> getAnggotaKK(int id_kk);
 }

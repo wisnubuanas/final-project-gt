@@ -18,6 +18,9 @@ class anggotakkService {
       updateGetId(id) {
         return http.get(`/anggotakk/updateGetId/${id}`);
       }
+      getAnggotaKK(id_kk) {
+        return http.get(`/anggotakk/getAnggotaKK/${id_kk}`)
+      }
 }
 
 export default new anggotakkService();

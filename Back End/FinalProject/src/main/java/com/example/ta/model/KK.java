@@ -67,7 +67,7 @@ public class KK {
 	public String getProvinsi() {
 		return provinsi;
 	}
-	public void setProinsi(String provinsi) {
+	public void setProvinsi(String provinsi) {
 		this.provinsi = provinsi;
 	}
 	public int getRt() {

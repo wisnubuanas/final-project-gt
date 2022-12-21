@@ -1,12 +1,12 @@
 <template>
 <div>
   <div class="home ml-3">
-    <h1 class="mt-3 mb-3 ">Home</h1>
+    <h1 class="mt-3 mb-3 ">Homepage</h1>
     <div class="row">
       <div class="col col-md-4">
 
         <!-- CARD -->
-        <div class="card-1 d-flex flex-column justify-content-center text-center">
+        <div class="card-1 d-flex flex-column justify-content-center text-center shadow">
           <p class="title-card">Jumlah KK</p>
           <p class="card-text">{{ kkData.length }}</p>
         </div>
@@ -19,8 +19,8 @@
       </div>
 
       <!-- TABLE -->
-      <div class="table mt-2 ml-3 " style="width: 80vw;">
-        <h5 class="mt-4 mb-2 mb-2">Tabel Kartu keluarga</h5>
+      <div class="table mt-2 ml-3  " style="width: 100vw;">
+        <h5 class="mt-4 mb-2 mb-2 d-flex text-center">Data Kartu keluarga</h5>
         <table id="datakkk" >
               <thead>
                   <tr>
@@ -32,7 +32,7 @@
                       <th scope="col">Action</th>
                   </tr>
               </thead>
-              <tbody>
+              <tbody v-if="kkData.length > 0">
                   <tr v-for="(item, index) in kkData" :key="item.id">
                       <td>{{ index + 1 }}</td>
                       <td>{{ item.nomor_kk }}</td>
@@ -40,11 +40,19 @@
                       <td>{{ item.kabupaten_kota }}</td>
                       <td>{{ item.kode_pos }}</td>
                       <td class="d-flex">
-                          <button class="btn btn-sm btn-warning mr-2 text-white">Update</button>
+                        <router-link :to="{ name :'details' , params:{no_kk:item.id}}"><button class="btn btn-primary mr-2" type="submit">Detail</button>
+                        </router-link>
                           <button class="btn btn-sm btn-danger" @click="deleteKKFunc(item.id)">Delete</button>
                       </td>
                   </tr>
               </tbody>
+              <tbody v-else>
+                <tr class="msg-tr text-center">
+                  <td colspan="6" class="msg-null">
+                    <h3>Saat ini Tidak Ada Data Kartu Keluarga !</h3>
+                  </td>
+                </tr>
+            </tbody>
           </table>
 
           <div class="footer">
@@ -57,69 +65,6 @@
     </div>
   </div>
   <div>
-
-    <!-- <div>
-      <div class="mt-5 ml-5">
-        <h3 id="h">Homepage</h3>
-      </div>
-      
-    <div class="row mt-4" id="kotakkkk" style="width:50%">
-      <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Jumlah Kartu Keluarga</h5>
-          <h3> NUMBER</h3> -->
-          <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-        <!-- </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Jumlah Seluruh Warga</h5>
-          <h3>NUMBER</h3> -->
-          <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-        <!-- </div>
-      </div>
-    </div>
-  </div> -->
-  
-  <!-- <div>         -->
-          <!-- <h3 class="text-center my-4 mt-3 ">Data Kartu Keluarga</h3>
-          <table id="datakk" class="table table-striped d-flex justify-content-around" >
-              <thead>
-                  <tr>
-                      <th scope="col">No</th>
-                      <th scope="col">Nomor KK</th>
-                      <th scope="col">Nama</th>
-                      <th scope="col">Alamat</th>
-                      <th scope="col">Kota</th>
-                      <th scope="col">Kode Pos</th>
-                      <th scope="col">Action</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr v-for="(item, index) in kkData" :key="item.id">
-                      <th>{{ index + 1 }}</th>
-                      <td>wlwlwl</td>
-                      <td>{{ item.first_name + " " + item.last_name }}</td>
-                      <td>{{ item.email }}</td>
-                      <td>{{ item.phone_number }}</td>
-                      <td>{{ item.city }}</td>
-                      <td>{{ item.address }}</td>
-                      <td>{{ item.postal_code }}</td>
-                      <td class="d-flex">
-                          <button class="btn btn-sm btn-warning mr-2 text-white" @click="$emit('updateShippingFunc', item)">Update</button>
-                          <button class="btn btn-sm btn-danger" @click="deleteShippingFunc(item.id)">Delete</button>
-                      </td>
-                  </tr>
-              </tbody>
-          </table>
-      </div> -->
-  
-    <!-- </div> -->
     
   </div>
 </div>
@@ -142,7 +87,7 @@ methods : {
                     console.log(e);
                 });
 },
-deleteKKFunc(id){
+        deleteKKFunc(id){
             if(confirm("Apakah anda yakin hapus?")){
                 kkService.deletekk(id)
                     .then(response => {
@@ -178,14 +123,16 @@ deleteKKFunc(id){
 .card-1 {
   height: 150px;
   width: 200px;
-  background-color: salmon;
+  /* background-color: salmon; */
+  background-color: #000080;
   border-radius: 20px;
 }
 
 .card-2 {
   height: 150px;
   width: 200px;
-  background-color: rgb(0, 255, 170);
+  /* background-color: rgb(0, 255, 170); */
+  background-color: #000080;
   border-radius: 20px;
 }
 

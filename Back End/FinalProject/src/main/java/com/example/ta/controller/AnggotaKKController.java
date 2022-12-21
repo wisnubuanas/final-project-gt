@@ -48,4 +48,9 @@ public class AnggotaKKController {
 	public AnggotaKK updateGetId(@PathVariable int id) {
 		return anggotakkService.updateGetId(id);
 	}
+	
+	@GetMapping("/getAnggotaKK/{id_kk}")
+	public List<AnggotaKK> getAnggotaKK(@PathVariable int id_kk){
+		return anggotakkService.getAnggotaKK(id_kk);
+	}
 }

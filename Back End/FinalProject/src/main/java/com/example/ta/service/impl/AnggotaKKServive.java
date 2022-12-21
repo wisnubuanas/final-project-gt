@@ -45,4 +45,10 @@ public class AnggotaKKServive implements IAnggotaKKService {
 		return anggotakkRepository.updateGetId(id);
 	}
 
+	@Override
+	public List<AnggotaKK> getAnggotaKK(int id_kk) {
+		// TODO Auto-generated method stub
+		return anggotakkRepository.getAnggotaKK(id_kk);
+	}
+
 }

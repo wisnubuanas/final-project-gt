@@ -4,11 +4,17 @@ import Home from "./pages/Home.vue";
 import AddKK from "./pages/AddKK.vue";
 import DetailAK from "./pages/DetailAK.vue"
 import DetailKK from "./pages/DetailKK.vue"
+import ListAnggota from "./pages/ListAnggota.vue"
+import test from "./pages/test.vue"
 
 export default[
     {
         path: "/",
         component : Login,
+    },
+    {
+        path: "/register",
+        component : Register,
     },
     {
         path: "/home",
@@ -23,11 +29,22 @@ export default[
         component : DetailAK,
     },
     {
-        path: "/detailKK",
-        component : DetailKK,
+        path: "/test",
+        component : test,
     },
     {
-        path: "/register",
-        component : Register,
+        path: "/detailKK/:no_kk",
+        component : DetailKK,
+        name : 'details',
     },
+    {
+        path: `/detailKK/:no_kk/listAnggota`,
+        component: ListAnggota,
+        name : 'listak',
+    },
+    // {
+    //     path: `/detailKK/:id/listAnggota/detailAnggota`,
+    //     component: "DetailAk"
+    // }
+
 ];

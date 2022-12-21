@@ -1,0 +1,54 @@
+package com.example.ta.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.ta.model.AnggotaKK;
+import com.example.ta.repository.IAnggotaKKRepository;
+import com.example.ta.service.IAnggotaKKService;
+
+@Service
+public class AnggotaKKServive implements IAnggotaKKService {
+
+	@Autowired
+	IAnggotaKKRepository anggotakkRepository;
+	
+	@Override
+	public AnggotaKK insertAnggotaKK(AnggotaKK anggotakk) {
+		// TODO Auto-generated method stub
+		return anggotakkRepository.insertAnggotaKK(anggotakk);
+	}
+
+	@Override
+	public List<AnggotaKK> getAllAnggotaKK() {
+		// TODO Auto-generated method stub
+		return anggotakkRepository.getAllAnggotaKK();
+	}
+
+	@Override
+	public AnggotaKK updateAnggotaKK(int id, AnggotaKK anggotakk) {
+		// TODO Auto-generated method stub
+		return anggotakkRepository.updateAnggotaKK(id, anggotakk);
+	}
+
+	@Override
+	public AnggotaKK deleteAnggotaKK(int id) {
+		// TODO Auto-generated method stub
+		return anggotakkRepository.deleteAnggotaKK(id);
+	}
+
+	@Override
+	public AnggotaKK updateGetId(int id) {
+		// TODO Auto-generated method stub
+		return anggotakkRepository.updateGetId(id);
+	}
+
+	@Override
+	public List<AnggotaKK> getAnggotaKK(int id) {
+		// TODO Auto-generated method stub
+		return anggotakkRepository.getAnggotaKK(id);
+	}
+
+}

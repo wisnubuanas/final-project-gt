@@ -17,7 +17,7 @@
   import DetailKK from '../components/DetailKK.vue'
   
   export default {
-      name : 'HomePage',
+      name : 'DetailKKPage',
       components: {
   
           Sidebar,

@@ -64,4 +64,11 @@ public class AnggotaKKRepository implements IAnggotaKKRepository {
 		return result;
 	}
 
+	@Override
+	public List<AnggotaKK> getAnggotaKK(int id_kk) {
+		// TODO Auto-generated method stub
+		String query = "SELECT * FROM tb_anggota_keluarga WHERE id_kk = ?";
+		return jdbcTemplate.query(query, new BeanPropertyRowMapper<>(AnggotaKK.class), id_kk);
+	}
+
 }

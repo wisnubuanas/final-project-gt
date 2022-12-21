@@ -1,23 +1,28 @@
 <template>
     <div>
-  
-                    <Detail></Detail>
-      <Sidebar></Sidebar>
-      
-        
+      <div>
+      <div class="row">
+        <div class="col-md-3">
+          <Sidebar></Sidebar>
+        </div>
+        <div class="col-md-9">
+          <FormAnggota></FormAnggota>
+        </div>
+      </div>
+    </div>   
     </div>
   </template>
   
   <script>
   
-  import Detail from '../components/Detailanggota.vue'
+  import FormAnggota from '../components/FormAnggota.vue'
   import Sidebar from '../components/Sidebar.vue'
   
   export default {
-      name : 'HomePage',
+      name : 'FormAnggotaPage',
       components: {
   
-          Detail,
+          FormAnggota,
           Sidebar,
   
         
